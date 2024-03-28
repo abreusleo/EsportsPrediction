@@ -1,0 +1,1 @@
+export { default as UpcomingMatchesContainer } from './UpcomingMatchesContainer.svelte';

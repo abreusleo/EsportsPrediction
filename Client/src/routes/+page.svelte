@@ -1,6 +1,7 @@
 <script lang="ts">
   import BackgroundImg from '$lib/assets/valorant-4.jpg';
   import { PredictionContainer } from '$lib/components/PredictionContainer/index.js';
+  import { UpcomingMatchesContainer } from '$lib/components/UpcomingMatchesContainer';
   import type { Championship, Player, Team } from '$lib/interfaces/dataTypes';
 
   export let data: {
@@ -25,8 +26,5 @@
   </div>
 
   <PredictionContainer data={data}/>
-  <section
-    data-testid="upcoming-favorites"
-    class="relative z-10 hidden h-full w-full bg-dark-grey sm:flex"
-  ></section>
+  <UpcomingMatchesContainer />
 </main>
