@@ -3,6 +3,7 @@ package main
 import (
 	"Api/internal/championship"
 	"Api/internal/player"
+	"Api/internal/prediction"
 	"Api/internal/team"
 	"Api/pkg/controllers"
 
@@ -15,10 +16,13 @@ func main() {
 	ChampionshipController := initChampionshipController()
 	PlayerController := initPlayerController()
 	TeamController := initTeamController()
+	PredcitionController := initPredictionController()
 
 	r.GET("/championship", ChampionshipController.GetPossibleChampionships)
 	r.GET("/player", PlayerController.GetPossiblePlayers)
 	r.GET("/team", TeamController.GetPossibleTeams)
+	r.GET("/prediction/types", PredcitionController.GetTypes)
+	r.GET("/prediction/:type", PredcitionController.Predict)
 	r.Run()
 }
 
@@ -45,4 +49,12 @@ func initTeamController() controllers.TeamController {
 	teamController := controllers.NewTeamController(teamService)
 
 	return *teamController
+}
+
+func initPredictionController() controllers.PredictionController {
+	predictionService := prediction.NewService()
+
+	predictionController := controllers.NewPredictionController(predictionService)
+
+	return *predictionController
 }
