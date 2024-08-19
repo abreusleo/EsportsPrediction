@@ -1,7 +1,7 @@
 package prediction
 
 import (
-	"Api/internal/prediction/predictor"
+	"Api/internal/prediction/predictor/factory"
 )
 
 type Service struct {
@@ -13,7 +13,7 @@ func NewService() *Service {
 
 func (s *Service) Predict(predictorType int) string {
 	predictionTypeString := PredictionTypes.String(PredictionTypes(predictorType))
-	predict := predictor.GetPredictor(predictionTypeString)
+	predict := factory.GetPredictor(predictionTypeString)
 
 	return predict.Predict()
 }
